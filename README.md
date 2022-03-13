@@ -1,6 +1,6 @@
 # Słowa Głowa
 
-Słowa Głowa (swɔva gwɔva) is a web implimentation of games similar to
+Słowa Głowa (swɔva gwɔva : Polish 'Words head') is a web implimentation of games similar to:
 
 - Heads Up
 - Deckheads
