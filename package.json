@@ -1,0 +1,17 @@
+{
+  "name": "slowa-glowa",
+  "description": "A web implmentation of games similar to 'Heads Up', the Iphone game 'Sharades' or 'Deck Heads'",
+  "private": false,
+  "scripts": {
+    "dev": "nuxi dev --https",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "nuxt3": "latest"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.1.8",
+    "pinia": "^2.0.11"
+  }
+}
