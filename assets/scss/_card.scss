@@ -1,0 +1,10 @@
+@use "./variables/colors";
+@use "./variables/shadow";
+
+.card {
+  box-shadow: shadow.$box-shadow;
+
+  &__body {
+    padding: 1.5em;
+  }
+}
