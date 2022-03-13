@@ -5,13 +5,15 @@ export default defineNuxtConfig({
   buildModules: [
     '@pinia/nuxt',
   ],
-  vite: {
-    server: {
-      hmr: {
-        protocol: 'ws',
-        host: 'localhost'
-      }
-    }
-
-  }
+  css: [
+    '@/assets/scss/index.scss',
+  ],
+  // vite: {
+  //   server: {
+  //     hmr: {
+  //       protocol: 'ws',
+  //       host: 'localhost'
+  //     }
+  //   }
+  // }
 })
