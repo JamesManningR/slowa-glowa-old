@@ -44,7 +44,8 @@ export default defineComponent({
     });
 
     return {
-      pack
+      pack,
+      letterColor
     }
   }
 })
