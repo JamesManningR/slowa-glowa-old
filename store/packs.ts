@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useSensorsStore = defineStore("packs", {
+export const usePacksStore = defineStore("packs", {
   state: () => ({
     packs: {} as { [key: string] : Packs.Pack },
   }),
