@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>{{ number }}</h1>
-
     <table>
       <tr>
         <th>
@@ -19,31 +17,50 @@
           {{ yaw }}
         </td>
       </tr>
+      <tr>
+        <th>
+          roll
+        </th>
+        <td>
+          {{ roll }}
+        </td>
+      </tr>
+      <tr>
+        <th>
+          abs
+        </th>
+        <td>
+          {{ abs }}
+        </td>
+      </tr>
     </table>
   </div>
 </template>
 
 <script lang="ts">
 import { defineNuxtComponent } from '#app';
-import { ref, onBeforeMount, onDeactivated } from 'vue';
+import { onBeforeMount, onDeactivated } from 'vue';
 import { storeToRefs } from 'pinia';  
-import { useStore } from '../store';
-  
+import { useSensorsStore } from '../store/sensors';
 
 export default defineNuxtComponent({
   async setup() {
-    const store = useStore();
+    const store = useSensorsStore();
     
-    const { pitch, yaw } = storeToRefs(store);
-    const number = ref(0)
+    const { pitch, yaw, roll, abs } = storeToRefs(store);
 
     const handleDeviceOrientation = (evt: DeviceOrientationEvent) => {
+      const absolute = evt.absolute;
       const alpha = evt.alpha; // In degree in the range [-360,360]
       const beta = evt.beta; // In degree in the range [-180,180]
+      const gamma = evt.gamma; // In degree in the range [-90,90]
+
 
       store.setOrientation({
         pitch: beta,
         yaw: alpha,
+        roll: gamma,
+        abs: absolute
       });
     }
 
@@ -65,9 +82,10 @@ export default defineNuxtComponent({
     });
 
     return {
-      number,
       pitch, 
       yaw,
+      roll,
+      abs
     };
   }
 })
