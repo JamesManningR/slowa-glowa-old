@@ -1,7 +1,5 @@
-<template>
-  <div>
-    {{ direction}}
-  </div>
+<template lang="pug">
+.direction-indicator {{ direction }}
 </template>
 
 <script lang="ts">

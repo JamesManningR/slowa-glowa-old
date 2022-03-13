@@ -1,48 +1,57 @@
-<template>
-<div id="card-form">
-  <h2>Create a pack</h2>
+<template lang="pug">
+#card-form
+  h2 Create a pack
+  
+  form(@submit.prevent='addWord')
+    h3 Add Word
+    input#newWord(v-model='newWord' type='text' name='word')
+    button(type='button') Add
 
-  <form @submit.prevent="addWord">
-    <h3>Add Word</h3>
-    <input v-model="newWord" type="text" name="word" id="newWord">
-    <button type="button">Add</button>
-  </form>
+  form(@submit='addPack')
+    h3 Words
+    label(for='pack-title') Title: 
+    input#pack-title(v-model='pack.title' type='text' name='title')
 
-  <form>
-    <h3>Words</h3>
-    <ul>
-      <li v-for="(word, index) in words">
-        <span>{{ word }}</span>
-        <button type="button" @click.prevent="removeWord(index)">Remove</button>
-      </li>
-    </ul>
-
-    <button type="submit">Create</button>
-  </form>
-</div>
-
+    label Words
+      ul
+        li(v-for='(word, index) in pack.words')
+          span {{ word }}
+          button(type='button' @click.prevent='removeWord(index)') Remove
+    
+    button(type='submit') Create
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { usePacksStore } from '../store/packs'
 
 export default defineComponent({
   setup () {
     const newWord = ref("");
-    const words = ref([]);
+    const pack = ref({
+      title: "",
+      words: []
+    });
     
     const addWord = () => { 
-      words.value.push(newWord.value)
+      pack.value.words.push(newWord.value)
       newWord.value = "";
     };
 
-    const removeWord = (index) => words.value.splice(index, 1);
+    const removeWord = (index) => pack.value.words.splice(index, 1);
+
+    const packsStore = usePacksStore();
+
+    const addPack = () => {
+      packsStore.addPack(pack.value);
+    };
 
     return {
       newWord,
-      words,
+      pack,
       addWord,
-      removeWord
+      removeWord,
+      addPack
     }
   }
 })

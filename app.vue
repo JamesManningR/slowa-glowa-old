@@ -1,9 +1,8 @@
-<template>
-  <h1>Słowa Głowa</h1>
+<template lang="pug">
+h1 Słowa Głowa
 
-  <FormCreatePack />
+FormCreatePack
 
-  <!-- <h1>Orientation</h1>
-  <AppDebug />
-  <AppDirectionIndicator /> -->
+  //- <AppDebug />
+  //- <AppDirectionIndicator />
 </template>

@@ -1,40 +1,17 @@
 <template>
-  <div>
-    <table>
-      <tr>
-        <th>
-          Pitch
-        </th>
-        <td>
-          {{ pitch }}
-        </td>
-      </tr>
-      <tr>
-        <th>
-          yaw
-        </th>
-        <td>
-          {{ yaw }}
-        </td>
-      </tr>
-      <tr>
-        <th>
-          roll
-        </th>
-        <td>
-          {{ roll }}
-        </td>
-      </tr>
-      <tr>
-        <th>
-          abs
-        </th>
-        <td>
-          {{ abs }}
-        </td>
-      </tr>
-    </table>
-  </div>
+table
+  tr
+    th Pitch
+    td {{ pitch }}
+  tr
+    th yaw
+    td {{ yaw }}
+  tr
+    th roll
+    td {{ roll }}
+  tr
+    th abs
+    td {{ abs }}
 </template>
 
 <script lang="ts">
