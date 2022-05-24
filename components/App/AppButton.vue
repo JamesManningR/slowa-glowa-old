@@ -12,9 +12,10 @@ button.app-btn
 
 .app-btn {
   border: variables.$border-width black solid;
-  padding: .3em .5em;
+  padding: variables.$padding-x variables.$padding-y;
   text-align: center;
   cursor: pointer;
+  box-shadow: variables.$box-shadow;
 
   &:hover, &:focus {
     background-color: grey;

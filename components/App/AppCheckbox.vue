@@ -46,11 +46,14 @@ export default {
 .app-checkbox {
   display: flex;
   align-items: center;
+  gap: .4em;
 
   &__input {
     display: inline-block;
     border: variables.$border-width black solid;
-    padding: 0.5em 0.5em;
+    padding: variables.$padding-y;
+    box-shadow: variables.$box-shadow;
+
     &:checked {
       background-color: #232323;
     }

@@ -2,17 +2,19 @@
 .app-input-submit(:class="$attrs.class")
   label.app-input-submit__label(v-if="$slots.default" :for="id") 
     slot
-  AppInput.app-input-submit__input(
-    v-model="value"
-    :id="id"
-    :type="$attrs.type || 'text'"
-    @keydown.enter.prevent="emit('submit', value)"
-  )
-  AppButton.app-input-submit__submit(
-    @click.prevent="emit('submit', value)"
-    type="submit"
-  )
-    slot(name="btn") Submit
+  
+  .app-input-submit__inputs
+    AppInput.app-input-submit__input(
+      v-model="value"
+      :id="id"
+      :type="$attrs.type || 'text'"
+      @keydown.enter.prevent="emit('submit', value)"
+    )
+    AppButton.app-input-submit__submit(
+      @click.prevent="emit('submit', value)"
+      type="submit"
+    )
+      slot(name="btn") Submit
 </template>
 
 <script setup lang="ts">
@@ -45,16 +47,27 @@ export default {
 </script>
 
 <style lang="scss">
+@use "@scss/variables";
+
 .app-input-submit {
   display: flex;
-  
+
   &__label {
     align-self: center;
     margin-right: .25em;
   }
 
+  &__inputs {
+    display: flex;
+    box-shadow: variables.$box-shadow;
+  }
+
   &__submit {
     border-left: 0;
+  }
+
+  &__input, &__submit {
+    box-shadow: none;
   }
 }
 </style>

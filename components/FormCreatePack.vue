@@ -76,7 +76,9 @@ const addPack = () => {
           AppButton(type="button" @click.prevent="removeWord(index)") Remove
 
     AppButton.card-form__submit(type="submit") Create
-  
+
+    AppRadio(name="ex" value="pap") pap
+    AppRadio(name="ex" value="dap") dap
   .preview
     PackCard(:pack="pack")
 
