@@ -29,6 +29,7 @@ const value = computed<string>({
 .app-input {
   border: variables.$border-width black solid;
   padding: variables.$padding-y variables.$padding-x;
-  box-shadow: variables.$box-shadow;
+  background-color: white;
+  @include variables.box-shadow;
 }
 </style>

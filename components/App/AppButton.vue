@@ -12,13 +12,18 @@ button.app-btn
 
 .app-btn {
   border: variables.$border-width black solid;
-  padding: variables.$padding-x variables.$padding-y;
+  background-color: white;
+  padding: variables.$padding-y variables.$padding-x;
   text-align: center;
   cursor: pointer;
-  box-shadow: variables.$box-shadow;
+  @include variables.box-shadow;
 
   &:hover, &:focus {
-    background-color: grey;
+    transition: 
+      transform variables.$animation-bounce-curve .25s,
+      filter variables.$animation-bounce-curve .25s;
+    transform: translate(-1px, -1px);
+    @include variables.box-shadow($x-offset: 1px, $y-offset: 1px);
   }
 
   &:active {

@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template lang="pug">
-.app-checkbox
+label.app-checkbox
   input.app-checkbox__input(
     :id="id"
     v-model="value"
@@ -36,14 +36,16 @@ export default {
     type="checkbox"
   )
 
-  label.app-checkbox__label(v-if="$slots.default" :for="id") 
+  span.app-checkbox__label
     slot
 </template>
 
 <style lang="scss">
+@use "sass:math";
 @use "@scss/variables";
 
 .app-checkbox {
+  position: relative;
   display: flex;
   align-items: center;
   gap: .4em;
@@ -51,11 +53,43 @@ export default {
   &__input {
     display: inline-block;
     border: variables.$border-width black solid;
-    padding: variables.$padding-y;
-    box-shadow: variables.$box-shadow;
+    padding: variables.$padding-x;
+    background-color: white;
+    @include variables.box-shadow;
+  }
 
-    &:checked {
-      background-color: #232323;
+  &__label {
+    &::before {
+      position: absolute;
+      top: calc(50% - math.div(variables.$padding-x, 1.5) + (variables.$border-width * .35));
+      left: calc(math.div(variables.$padding-x, 2) + (variables.$border-width * .35));
+      content: "";
+      display: inline-block;
+      width: variables.$padding-y * 1.8;
+      height: variables.$padding-y * 1.8;
+      background-color: #000;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform variables.$animation-bounce-curve .25s, opacity variables.$animation-bounce-curve .25s;
+    }
+  }
+
+
+  &__input {
+    &:hover, &:focus {
+      + .app-checkbox__label {
+        &::before {
+          opacity: .5;
+          transform: scale(.55);
+        }
+      }
+    }
+  }
+
+  &__input:checked + &__label  {
+    &::before {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 }

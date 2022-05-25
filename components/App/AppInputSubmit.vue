@@ -59,7 +59,7 @@ export default {
 
   &__inputs {
     display: flex;
-    box-shadow: variables.$box-shadow;
+    @include variables.box-shadow;
   }
 
   &__submit {

@@ -1,11 +1,12 @@
 $border-radius: .2em;
 $border-width: 2px;
 
-$box-shadow-distance: 3px 4px;
+$box-shadow-distance-x: 3px;
+$box-shadow-distance-y: 4px;
 $box-shaodw-blur: 0px;
 $box-shaodw-color: #000;
-$box-shadow: $box-shadow-distance $box-shaodw-blur 0px $box-shaodw-color;
-$box-shadow-round: $box-shadow-distance $box-shadow-blur 50% $box-shaodw-color;
+
+$animation-bounce-curve: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 $padding-x: .75em;
 $padding-y: .5em;
@@ -16,4 +17,8 @@ $font-sizes: (
   h3: 1.55em,
   h4: 1.5em,
   base: 1em,
-)
+);
+
+@mixin box-shadow($x-offset: 0px, $y-offset: 0px) {
+  filter: drop-shadow(calc($box-shadow-distance-x + $x-offset) calc($y-offset + $box-shadow-distance-y) $box-shaodw-blur $box-shaodw-color);
+}
