@@ -31,8 +31,8 @@ label.app-radio
 
   &__input {
     display: inline-block;
-    border: variables.$border-width black solid;
-    background-color: white;
+    border: variables.$border-width variables.$col-black solid;
+    background-color: variables.$col-white;
     padding: variables.$padding-x;
     border-radius: 50%;
     @include variables.box-shadow;
@@ -54,7 +54,7 @@ label.app-radio
       transition: transform variables.$animation-bounce-curve .25s, opacity variables.$animation-bounce-curve .25s;
       transform: scale(0);
       opacity: 0;
-      background-color: black;
+      background-color: variables.$col-black;
     }
   }
 
@@ -66,6 +66,10 @@ label.app-radio
           transform: scale(.55);
         }
       }
+    }
+
+    &:focus {
+      box-shadow: variables.$input-focus-shadow;
     }
   }
 

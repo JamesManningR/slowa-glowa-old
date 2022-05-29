@@ -27,9 +27,14 @@ const value = computed<string>({
 @use "@scss/variables";
 
 .app-input {
-  border: variables.$border-width black solid;
+  border: variables.$border-width variables.$col-black solid;
   padding: variables.$padding-y variables.$padding-x;
-  background-color: white;
+  background-color: variables.$col-white;
   @include variables.box-shadow;
+  transition: variables.$input-transition;
+
+  &:focus {
+    box-shadow: variables.$input-focus-shadow;
+  }
 }
 </style>

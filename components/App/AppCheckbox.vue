@@ -52,9 +52,9 @@ label.app-checkbox
 
   &__input {
     display: inline-block;
-    border: variables.$border-width black solid;
+    border: variables.$border-width variables.$col-black solid;
     padding: variables.$padding-x;
-    background-color: white;
+    background-color: variables.$col-white;
     @include variables.box-shadow;
   }
 
@@ -70,7 +70,7 @@ label.app-checkbox
       background-color: #000;
       opacity: 0;
       transform: scale(0);
-      transition: transform variables.$animation-bounce-curve .25s, opacity variables.$animation-bounce-curve .25s;
+      transition: variables.$input-transition;
     }
   }
 
@@ -83,6 +83,10 @@ label.app-checkbox
           transform: scale(.55);
         }
       }
+    }
+
+    &:focus {
+      box-shadow: variables.$input-focus-shadow;
     }
   }
 

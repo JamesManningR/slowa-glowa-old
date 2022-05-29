@@ -67,7 +67,7 @@ export default {
   }
 
   &__input, &__submit {
-    box-shadow: none;
+    filter: none;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 <template lang="pug">
 .app
-  h1.h1 Słowa Głowa
+  header.app-header
+    h1.h1 Słowa Głowa
 
   FormCreatePack
 
@@ -12,7 +13,15 @@
 </script>
 
 <style lang="scss">
+@use "@scss/variables";
+@use "@scss/functions";
+
 .app {
+  &-header {
+    background-color: variables.$col-primary;
+    color: functions.color-contrast(variables.$col-primary);
+  }
+
   .title {
     font-size: 2em;
     font-weight: bold;

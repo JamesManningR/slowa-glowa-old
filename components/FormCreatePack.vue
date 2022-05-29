@@ -107,7 +107,7 @@ const addPack = () => {
   }
 
   &__words {
-    border: variables.$border-width solid black;
+    border: variables.$border-width solid variables.$col-black;
     max-width: max-content;
     display: flex;
     flex-direction: column;

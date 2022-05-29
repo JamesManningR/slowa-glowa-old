@@ -1,3 +1,13 @@
+@use "sass:math";
+@use "sass:list";
+@use "sass:color";
+
+$acc-min-contrast-ratio: 2;
+
+$col-black: #0f0f0f;
+$col-white: #fcfcfc;
+$col-primary: #44e;
+
 $border-radius: .2em;
 $border-width: 2px;
 
@@ -19,6 +29,24 @@ $font-sizes: (
   base: 1em,
 );
 
-@mixin box-shadow($x-offset: 0px, $y-offset: 0px) {
-  filter: drop-shadow(calc($box-shadow-distance-x + $x-offset) calc($y-offset + $box-shadow-distance-y) $box-shaodw-blur $box-shaodw-color);
-}
+@mixin box-shadow($x-offset: 0px, $y-offset: 0px, $additional-filters: []) {
+  $shadow-filter: drop-shadow(calc($box-shadow-distance-x + $x-offset) calc($y-offset + $box-shadow-distance-y) $box-shaodw-blur $box-shaodw-color);
+  $filters: list.join($additional-filters, $shadow-filter, $bracketed: false);
+  
+  filter: $filters;
+};
+
+$active-glow: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.5));
+
+$input-transition: transform $animation-bounce-curve .25s, filter $animation-bounce-curve .25s;
+
+$input-active-offset-x: -2px;
+$input-active-offset-y: $input-active-offset-x;
+
+$input-hover-offset-x: -1px;
+$input-hover-offset-y: $input-hover-offset-x;
+
+$input-focus-shadow: 0 0 0 .25rem (color.adjust($col-primary, $alpha: -0.4));
+
+$btn-pressed-offset-x: 1px;
+$btn-pressed-offset-y: $btn-pressed-offset-x;
